@@ -23,12 +23,10 @@ std::string checkArgs(int argc, char** argv, bool &showFiles) {
 			return std::string(argv[1]);
 		}
 	} 
-	else usageNexit(argv[0]);
+	usageNexit(argv[0]);
 }
 
 int main(int argc, char** argv) {
-	//std::cout << "args: " << std::flush;
-	//for (unsigned i = 1; i <= argc; i++) std::cout << argv[i] << " ";
 	std::cout << std::flush;
 	bool showFiles;
 	std::string path {checkArgs(argc, argv, showFiles)};
