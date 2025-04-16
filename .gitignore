@@ -1,0 +1,18 @@
+# ignore binaries
+**/*.o
+**/*.s
+**/*.exe
+
+# ignore binary dirs
+**/bin
+**/bin/*
+**/build
+**/build/*
+
+# ignore test data
+**/testdata
+**/testdata/*
+
+# ignore ide dirs
+**/.vscode
+**/.vscode/*
