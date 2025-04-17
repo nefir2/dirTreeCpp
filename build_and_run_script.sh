@@ -23,7 +23,10 @@ fi;
 g++ -std=c++17 "${srcdir}/*${srcfilesext}" -o "${bindir}/${projfilename}";
 
 if [ $? -eq 0 ]; then
+	echo -e "\nbuild completed.\nrunning the program . . . \n-------------------------------------";
 	command "${bindir}/${projfilename}" "${@}";
+else
+	echo "build is not completed.";
 fi;
 
-exit 0;
+exit $?;

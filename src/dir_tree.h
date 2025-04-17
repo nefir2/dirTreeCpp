@@ -5,6 +5,7 @@
 
 /// @brief tree lib.
 namespace tree {
+	/// @brief directory's entries
 	class directory_entries {
 	private:
 		std::filesystem::path path;
@@ -12,18 +13,20 @@ namespace tree {
 	public:
 		/// @brief new instance of vector dir's entries.
 		/// @param path path to directory, which array is needed.
-		directory_entries(std::string path);
+		/// @param files if true, entries will collect file.
+		directory_entries(std::string, bool);
 		/// @brief new instance of vector dir's entries.
 		/// @param path path to directory, which array is needed.
-		directory_entries(std::filesystem::path);
+		/// @param files if true, entries will collect file.
+		directory_entries(std::filesystem::path, bool);
 		/// @brief destroy this instance.
 		~directory_entries() noexcept;
 	public:
 		std::vector<std::filesystem::directory_entry> get_entries() const noexcept;
 		bool is_directory_empty() const noexcept;
 		bool is_path_exist() const noexcept;
-		void set_path(std::string path);
-		void set_path(std::filesystem::path path);
+		void set_path(std::string, bool);
+		void set_path(std::filesystem::path, bool);
 		void sort();
 	};
 	/// @brief outputs to stdout tree.
@@ -34,6 +37,7 @@ namespace tree {
 }
 
 /*
+
 ├───project
 │	├───file.txt (19b)
 │	└───gopher.png (70372b)
@@ -64,6 +68,8 @@ namespace tree {
 │			└───gopher.png (70372b)
 └───zzfile.txt (empty)
 
+---------------------------
+
 ├───project
 ├───static
 │	├───a_lorem
@@ -76,4 +82,5 @@ namespace tree {
 └───zline
 	└───lorem
 		└───ipsum
+
 */
