@@ -30,6 +30,12 @@ int main(int argc, char** argv) {
 	std::cout << std::flush;
 	bool showFiles;
 	std::string path {checkArgs(argc, argv, showFiles)};
-	dirTree(path, showFiles);
+	
+	try { dirTree(path, showFiles); }
+	catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+		return -2;
+	}
+	
 	return 0;
 }

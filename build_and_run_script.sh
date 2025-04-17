@@ -20,7 +20,7 @@ if [ ! -d "$bindir" ]; then
 	mkdir "$bindir";
 fi;
 
-g++ "${srcdir}/*${srcfilesext}" -o "${bindir}/${projfilename}";
+g++ -std=c++17 "${srcdir}/*${srcfilesext}" -o "${bindir}/${projfilename}";
 
 if [ $? -eq 0 ]; then
 	command "${bindir}/${projfilename}" "${@}";

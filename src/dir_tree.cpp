@@ -1,51 +1,28 @@
 #include <string>
+#include <filesystem>
+#include <algorithm>
+#include <vector>
+
 #include "dir_tree.h"
 
-void dirTree(std::string path, bool showFiles) {
-	
+void treeFiles(std::filesystem::path path) {
+	for (auto e : std::filesystem::recursive_directory_iterator(path)) {
+	}
 }
 
-/*
-├───project
-│	├───file.txt (19b)
-│	└───gopher.png (70372b)
-├───static
-│	├───a_lorem
-│	│	├───dolor.txt (empty)
-│	│	├───gopher.png (70372b)
-│	│	└───ipsum
-│	│		└───gopher.png (70372b)
-│	├───css
-│	│	└───body.css (28b)
-│	├───empty.txt (empty)
-│	├───html
-│	│	└───index.html (57b)
-│	├───js
-│	│	└───site.js (10b)
-│	└───z_lorem
-│		├───dolor.txt (empty)
-│		├───gopher.png (70372b)
-│		└───ipsum
-│			└───gopher.png (70372b)
-├───zline
-│	├───empty.txt (empty)
-│	└───lorem
-│		├───dolor.txt (empty)
-│		├───gopher.png (70372b)
-│		└───ipsum
-│			└───gopher.png (70372b)
-└───zzfile.txt (empty)
+void treeDirectory(std::filesystem::path path) {
+	for (auto e : std::filesystem::recursive_directory_iterator(path)) {
+		if (std::filesystem::is_directory(path)) {
+		}
+	}
+}
 
-├───project
-├───static
-│	├───a_lorem
-│	│	└───ipsum
-│	├───css
-│	├───html
-│	├───js
-│	└───z_lorem
-│		└───ipsum
-└───zline
-	└───lorem
-		└───ipsum
-*/
+// outputs to stdout tree.
+//
+// throws std::invalid_argument if path is not exist.
+void dirTree(std::string path, bool showFiles) {
+	if (!std::filesystem::exists(path)) throw std::invalid_argument("path not exist.");
+	std::filesystem::path pPath{path};
+	if (showFiles) treeFiles(pPath);
+	else treeDirectory(pPath);
+}
