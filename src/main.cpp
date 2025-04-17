@@ -1,12 +1,12 @@
 #include <iostream>
 #include "dir_tree.h"
 
-void usageNexit(char* programName) {
+void usageNexit(char* programName) noexcept {
 	std::cerr << "usage: " << programName << " {path} [-f]";
 	exit(-1);
 }
 
-std::string checkArgs(int argc, char** argv, bool &showFiles) {
+std::string checkArgs(int argc, char** argv, bool &showFiles) noexcept {
 	showFiles = false;
 	if (argc < 2 || argc > 3) usageNexit(argv[0]);
 	else if (argc == 2) {
@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
 	bool showFiles;
 	std::string path {checkArgs(argc, argv, showFiles)};
 	
-	try { dirTree(path, showFiles); }
+	try { tree::dirTree(path, showFiles); }
 	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';
 		return -2;

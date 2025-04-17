@@ -1,7 +1,36 @@
 #pragma once
 #include <string>
+#include <vector>
+#include <filesystem>
 
-void dirTree(std::string, bool);
+/// @brief tree lib.
+namespace tree {
+	class directory_entries {
+	private:
+		std::filesystem::path path;
+		std::vector<std::filesystem::directory_entry> entries;
+	public:
+		/// @brief new instance of vector dir's entries.
+		/// @param path path to directory, which array is needed.
+		directory_entries(std::string path);
+		/// @brief new instance of vector dir's entries.
+		/// @param path path to directory, which array is needed.
+		directory_entries(std::filesystem::path);
+		/// @brief destroy this instance.
+		~directory_entries();
+	public:
+		std::vector<std::filesystem::directory_entry> get_entries();
+		bool is_directory_empty();
+		bool is_path_exist();
+		void set_path(std::string path);
+		void set_path(std::filesystem::path path);
+	};
+	/// @brief outputs to stdout tree.
+	/// @param path path from which dir start tree.
+	/// @param showFiles show files if true.
+	/// @exception throws std::invalid_argument if path is not exist.
+	void dirTree(std::string, bool);
+}
 
 /*
 ├───project
