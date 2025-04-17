@@ -17,13 +17,14 @@ namespace tree {
 		/// @param path path to directory, which array is needed.
 		directory_entries(std::filesystem::path);
 		/// @brief destroy this instance.
-		~directory_entries();
+		~directory_entries() noexcept;
 	public:
-		std::vector<std::filesystem::directory_entry> get_entries();
-		bool is_directory_empty();
-		bool is_path_exist();
+		std::vector<std::filesystem::directory_entry> get_entries() const noexcept;
+		bool is_directory_empty() const noexcept;
+		bool is_path_exist() const noexcept;
 		void set_path(std::string path);
 		void set_path(std::filesystem::path path);
+		void sort();
 	};
 	/// @brief outputs to stdout tree.
 	/// @param path path from which dir start tree.

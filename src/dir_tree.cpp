@@ -1,7 +1,6 @@
 #include <string>
-#include <filesystem>
-#include <algorithm>
 #include <vector>
+#include <filesystem>
 
 #include "dir_tree.h"
 
