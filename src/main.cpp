@@ -1,12 +1,12 @@
 #include <iostream>
 #include "dir_tree.h"
 
-inline const void usageNexit(const char* programName) noexcept {
+inline const void usageNexit(const char* const programName) noexcept {
 	std::cerr << "usage: " << programName << " {path} [-f]";
 	exit(-1);
 }
 
-inline const std::string checkArgs(const int argc, const char** argv, bool &showFiles) noexcept {
+inline const std::string checkArgs(const int argc, const char** const argv, bool &showFiles) noexcept {
 	showFiles = false;
 	if (argc == 2) {
 		if (std::string(argv[1]).find("-h") == std::string::npos) return std::string(argv[1]);
@@ -25,7 +25,7 @@ inline const std::string checkArgs(const int argc, const char** argv, bool &show
 	usageNexit(argv[0]);
 }
 
-int main(const int argc, const char** argv) {
+int main(const int argc, const char** const argv) {
 	bool showFiles;
 	const std::string path {checkArgs(argc, argv, showFiles)};
 	

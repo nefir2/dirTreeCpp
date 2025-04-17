@@ -14,20 +14,31 @@ namespace tree {
 		/// @brief new instance of vector dir's entries.
 		/// @param path path to directory, which array is needed.
 		/// @param files if true, entries will collect file.
-		directory_entries(std::string, bool);
+		directory_entries(std::string, bool = false);
 		/// @brief new instance of vector dir's entries.
 		/// @param path path to directory, which array is needed.
 		/// @param files if true, entries will collect file.
-		directory_entries(std::filesystem::path, bool);
+		directory_entries(std::filesystem::path, bool = false);
 		/// @brief destroy this instance.
 		~directory_entries() noexcept;
 	public:
-		std::vector<std::filesystem::directory_entry> get_entries() const noexcept;
-		bool is_directory_empty() const noexcept;
-		bool is_path_exist() const noexcept;
-		void set_path(std::string, bool);
-		void set_path(std::filesystem::path, bool);
-		void sort();
+		inline std::vector<std::filesystem::directory_entry> get_entries() const noexcept;
+		/// @brief sets new path.
+		/// @param path path value.
+		/// @param with_files true, if need to collect directories with files.
+		inline void set_path(std::string, bool = false);
+		/// @brief sets new path.
+		/// @param path path value.
+		/// @param with_files true, if need to collect directories with files.
+		inline void set_path(std::filesystem::path, bool = false);
+		/// @brief checks is directory empty.
+		/// @return value that tells is directory empty (true if is empty).
+		inline bool is_directory_empty() const noexcept;
+		/// @brief checks is constructed path is exists.
+		/// @return value that tells is path exists (true if it is).
+		inline bool is_path_exist() const noexcept;
+		/// @brief sorts entries.
+		inline void sort();
 	};
 	/// @brief outputs to stdout tree.
 	/// @param path path from which dir start tree.
