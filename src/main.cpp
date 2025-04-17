@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "dir_tree.h"
 
 inline const void usageNexit(const char* const programName) noexcept {
