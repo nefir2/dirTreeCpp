@@ -5,8 +5,7 @@
 
 #include "dir_tree.h"
 
-namespace tree
-{
+namespace tree {
 	// directory_entries definitions
 
 	directory_entries::directory_entries(std::string path, bool with_files)				{ this->set_path(path, with_files); }
@@ -24,7 +23,7 @@ namespace tree
 
 	inline void directory_entries::set_path(std::filesystem::path path, bool with_files) { // noexcept(std::filesystem::exists(path))
 		this->path = path;
-		for (std::filesystem::directory_entry e : std::filesystem::directory_iterator(this->path)) {
+		for (std::filesystem::directory_entry e : std::filesystem::recursive_directory_iterator(this->path)) {
 			if (e.is_directory()) entries.push_back(e);
 			else if (with_files) entries.push_back(e);
 		}

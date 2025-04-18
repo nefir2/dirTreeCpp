@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstring>
+#include <string>
 
 #include "dir_tree.h"
 
@@ -26,10 +28,10 @@ inline const std::string checkArgs(const int argc, const char** const argv, bool
 	usageNexit(argv[0]);
 }
 
-int main(const int argc, const char** const argv) {
+int main(const int& argc, const char** const argv) {
 	bool showFiles;
 	const std::string path {checkArgs(argc, argv, showFiles)};
-	
+
 	try { tree::dirTree(path, showFiles); }
 	catch(const std::exception& e) {
 		std::cerr << e.what() << '\n';

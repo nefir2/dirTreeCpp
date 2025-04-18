@@ -48,7 +48,7 @@ namespace tree {
 }
 
 /*
-
+$ dirTree . -f
 ├───project
 │	├───file.txt (19b)
 │	└───gopher.png (70372b)
@@ -81,6 +81,7 @@ namespace tree {
 
 ---------------------------
 
+$ dirTree .
 ├───project
 ├───static
 │	├───a_lorem
